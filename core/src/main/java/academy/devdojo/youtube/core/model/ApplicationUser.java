@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class ApplicationUser implements AbstractEntity {
+public class  ApplicationUser implements AbstractEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +26,7 @@ public class ApplicationUser implements AbstractEntity {
 
     @NotNull(message = "The field 'password' is mandatory")
     @Column(nullable = false)
+    @ToString.Exclude
     private String password;
 
     @NotNull(message = "The field 'role' is mandatory")

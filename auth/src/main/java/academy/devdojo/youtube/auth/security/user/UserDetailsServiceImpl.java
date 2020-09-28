@@ -36,7 +36,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return new CustomUserDetails(applicationUser);
     }
 
-    private static class CustomUserDetails extends ApplicationUser implements UserDetails{
+    private static final class CustomUserDetails extends ApplicationUser implements UserDetails{
 
         CustomUserDetails(@NotNull ApplicationUser applicationUser) {
             super(applicationUser);
