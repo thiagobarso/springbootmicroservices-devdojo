@@ -22,6 +22,7 @@
     <modules>
         <module>core</module>
         <module>course</module>
+        <module>token</module>
     </modules>
 
     <dependencies>
