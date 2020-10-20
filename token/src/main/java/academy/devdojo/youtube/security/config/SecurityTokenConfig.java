@@ -21,13 +21,14 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues())
                 .and()
-                    .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                    .exceptionHandling().authenticationEntryPoint((req, resp, e) -> resp.sendError(HttpServletResponse.SC_UNAUTHORIZED))
+                .exceptionHandling().authenticationEntryPoint((req, resp, e) -> resp.sendError(HttpServletResponse.SC_UNAUTHORIZED))
                 .and()
                 .authorizeRequests()
-                    .antMatchers(jwtConfiguration.getLoginUrl()).permitAll()
-                    .antMatchers("/course/v1/admin/**").hasRole("ADMIN")
+                .antMatchers(jwtConfiguration.getLoginUrl()).permitAll()
+                .antMatchers("/course/v1/admin/**").hasRole("ADMIN")
+                .antMatchers("/auth/user/**").hasAnyRole("ADMIN", "USER")
                 .anyRequest().authenticated();
     }
 
